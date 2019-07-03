@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.vishnumj.facehelper.sample"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/core_release.kotlin_module'
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    //Core
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "com.google.android.material:material:$material_version"
+
+    // Lifecycle extension
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    // MaterialColors
+    implementation 'com.theah64.materialcolors:materialcolors:1.0.0'
+
+    // TwinKill
+    def twinkill_version = '0.0.1-alpha04'
+    implementation "com.theapache64.twinkill:core:$twinkill_version"
+    implementation "com.theapache64.twinkill:logger:$twinkill_version"
+    implementation "com.theapache64.twinkill:network:$twinkill_version"
+    implementation "com.theapache64.twinkill:google_fonts:0.0.1-alpha01"
+
+    // Dexter
+    implementation 'com.karumi:dexter:5.0.0'
+
+    // Facial Recognition depedencies
+
+    // Kotlin coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKTX_version"
+
+    // MaterialDialogs
+    implementation "com.afollestad.material-dialogs:core:$materialdialogs_version"
+
+    // Google Play services
+    implementation "com.google.android.gms:play-services-vision:$gms_vision_version"
+
+    // Dexter permissions
+    implementation "com.karumi:dexter:$dexter_version"
+
+    // Progressbar
+    implementation "com.mikhaellopez:circularprogressbar:$progress_circular_version"
+    implementation project(path: ':camerakit')
+    implementation project(path: ':facehelper')
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}

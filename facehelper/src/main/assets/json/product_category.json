@@ -1,0 +1,32 @@
+[
+  {
+    "product_type_id": 1,
+    "product_type_name": "Aerated",
+    "product_type_image": "ic_cat_aerated"
+  },
+  {
+    "product_type_id": 2,
+    "product_type_name": "Aloe Vera",
+    "product_type_image": "ic_cat_aloevera"
+  },
+  {
+    "product_type_id": 3,
+    "product_type_name": "Fruit",
+    "product_type_image": "ic_cat_fruit"
+  },
+  {
+    "product_type_id": 4,
+    "product_type_name": "Caffeine",
+    "product_type_image": "ic_cat_caffeine"
+  },
+  {
+    "product_type_id": 5,
+    "product_type_name": "Energy",
+    "product_type_image": "ic_cat_energy"
+  },
+  {
+    "product_type_id": 6,
+    "product_type_name": "Soy",
+    "product_type_image": "ic_cat_soy"
+  }
+]

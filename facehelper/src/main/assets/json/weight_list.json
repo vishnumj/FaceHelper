@@ -1,0 +1,152 @@
+[
+  {
+    "weight_id": 0,
+    "weight_display": "Weight",
+    "weight_in_pounds": 0,
+    "weight_in_kilograms": 0
+  },
+  {
+    "weight_id": 1,
+    "weight_display": "100 - 45.5",
+    "weight_in_pounds": 100,
+    "weight_in_kilograms": 45.5
+  },
+  {
+    "weight_id": 2,
+    "weight_display": "105 - 47.7",
+    "weight_in_pounds": 105,
+    "weight_in_kilograms": 47.7
+  },
+  {
+    "weight_id": 3,
+    "weight_display": "110 - 50",
+    "weight_in_pounds": 110,
+    "weight_in_kilograms": 50
+  },
+  {
+    "weight_id": 4,
+    "weight_display": "115 - 52.3",
+    "weight_in_pounds": 115,
+    "weight_in_kilograms": 52.3
+  },
+  {
+    "weight_id": 5,
+    "weight_display": "120 - 54.5",
+    "weight_in_pounds": 120,
+    "weight_in_kilograms": 54.5
+  },
+  {
+    "weight_id": 6,
+    "weight_display": "125 - 56.8",
+    "weight_in_pounds": 125,
+    "weight_in_kilograms": 56.8
+  },
+  {
+    "weight_id": 7,
+    "weight_display": "130 - 59.1",
+    "weight_in_pounds": 130,
+    "weight_in_kilograms": 59.1
+  },
+  {
+    "weight_id": 8,
+    "weight_display": "135 - 61.4",
+    "weight_in_pounds": 135,
+    "weight_in_kilograms": 61.4
+  },
+  {
+    "weight_id": 9,
+    "weight_display": "140 - 63.6",
+    "weight_in_pounds": 140,
+    "weight_in_kilograms": 63.6
+  },
+  {
+    "weight_id": 10,
+    "weight_display": "145 - 65.9",
+    "weight_in_pounds": 145,
+    "weight_in_kilograms": 65.9
+  },
+  {
+    "weight_id": 11,
+    "weight_display": "150 - 68.2",
+    "weight_in_pounds": 150,
+    "weight_in_kilograms": 68.2
+  },
+  {
+    "weight_id": 12,
+    "weight_display": "155 - 70.5",
+    "weight_in_pounds": 155,
+    "weight_in_kilograms": 70.5
+  },
+  {
+    "weight_id": 13,
+    "weight_display": "160 - 72.7",
+    "weight_in_pounds": 160,
+    "weight_in_kilograms": 72.7
+  },
+  {
+    "weight_id": 14,
+    "weight_display": "165 - 75",
+    "weight_in_pounds": 165,
+    "weight_in_kilograms": 75
+  },
+  {
+    "weight_id": 15,
+    "weight_display": "170 - 77.3",
+    "weight_in_pounds": 170,
+    "weight_in_kilograms": 77.3
+  },
+  {
+    "weight_id": 16,
+    "weight_display": "175 - 79.5",
+    "weight_in_pounds": 175,
+    "weight_in_kilograms": 79.5
+  },
+  {
+    "weight_id": 17,
+    "weight_display": "180 - 81.8",
+    "weight_in_pounds": 180,
+    "weight_in_kilograms": 81.8
+  },
+  {
+    "weight_id": 18,
+    "weight_display": "185 - 84.1",
+    "weight_in_pounds": 185,
+    "weight_in_kilograms": 84.1
+  },
+  {
+    "weight_id": 19,
+    "weight_display": "190 - 86.4",
+    "weight_in_pounds": 190,
+    "weight_in_kilograms": 86.4
+  },
+  {
+    "weight_id": 20,
+    "weight_display": "195 - 88.6",
+    "weight_in_pounds": 195,
+    "weight_in_kilograms": 88.6
+  },
+  {
+    "weight_id": 21,
+    "weight_display": "200 - 90.9",
+    "weight_in_pounds": 200,
+    "weight_in_kilograms": 90.9
+  },
+  {
+    "weight_id": 22,
+    "weight_display": "205 - 93.2",
+    "weight_in_pounds": 205,
+    "weight_in_kilograms": 93.2
+  },
+  {
+    "weight_id": 23,
+    "weight_display": "210 - 95.5",
+    "weight_in_pounds": 210,
+    "weight_in_kilograms": 95.5
+  },
+  {
+    "weight_id": 24,
+    "weight_display": "215 - 97.7",
+    "weight_in_pounds": 215,
+    "weight_in_kilograms": 97.7
+  }
+]

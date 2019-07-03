@@ -1,0 +1,52 @@
+[
+  {
+    "age_group_id": 0,
+    "age_groups": "Age",
+    "age_intermediate": 0
+  },
+  {
+    "age_group_id": 1,
+    "age_groups": "5 - 15",
+    "age_intermediate": 10
+  },
+  {
+    "age_group_id": 2,
+    "age_groups": "16 - 25",
+    "age_intermediate": 20
+  },
+  {
+    "age_group_id": 3,
+    "age_groups": "26 - 35",
+    "age_intermediate": 30
+  },
+  {
+    "age_group_id": 4,
+    "age_groups": "36 - 45",
+    "age_intermediate": 40
+  },
+  {
+    "age_group_id": 5,
+    "age_groups": "46 - 55",
+    "age_intermediate": 50
+  },
+  {
+    "age_group_id": 6,
+    "age_groups": "56 - 65",
+    "age_intermediate": 60
+  },
+  {
+    "age_group_id": 7,
+    "age_groups": "66 - 75",
+    "age_intermediate": 70
+  },
+  {
+    "age_group_id": 8,
+    "age_groups": "76 - 85",
+    "age_intermediate": 80
+  },
+  {
+    "age_group_id": 9,
+    "age_groups": "85+",
+    "age_intermediate": 90
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "face_id": 1,
+    "face_name": "Aswin B",
+    "face_gender": "Female"
+  },
+  {
+    "face_id": 2,
+    "face_name": "Jini",
+    "face_gender": "Female"
+  },
+  {
+    "face_id": 3,
+    "face_name": "Jobin Kalapurackal",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 4,
+    "face_name": "Alfred Hendry",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 5,
+    "face_name": "Retheesh Sasidharan",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 6,
+    "face_name": "Mohsin P V",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 7,
+    "face_name": "Divya S B",
+    "face_gender": "Female"
+  },
+  {
+    "face_id": 8,
+    "face_name": "Soja George",
+    "face_gender": "Female"
+  },
+  {
+    "face_id": 9,
+    "face_name": "Abhilash Gopalakrishnan",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 10,
+    "face_name": "Neethu Vimela",
+    "face_gender": "Female"
+  },
+  {
+    "face_id": 11,
+    "face_name": "Nithin K Prakash",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 12,
+    "face_name": "Ajin",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 13,
+    "face_name": "demo2",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 14,
+    "face_name": "Johny",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 15,
+    "face_name": "dileep",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 16,
+    "face_name": "Kurian",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 17,
+    "face_name": "sreekesh k c",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 18,
+    "face_name": "Sudeesh K B",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 19,
+    "face_name": "Sudeesh",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 20,
+    "face_name": "vinup tk",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 21,
+    "face_name": "Johnson Mathew",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 22,
+    "face_name": "Prabhu Varma",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 23,
+    "face_name": "Manoj K P",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 24,
+    "face_name": "Deepa H Somasundara",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 25,
+    "face_name": "Rejish",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 26,
+    "face_name": "mohanlal",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 27,
+    "face_name": "Ajin K Augustine",
+    "face_gender": "Male"
+  },
+  {
+    "face_id": 28,
+    "face_name": "alvin",
+    "face_gender": "Male"
+  }
+]

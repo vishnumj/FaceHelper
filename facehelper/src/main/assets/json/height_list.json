@@ -1,0 +1,110 @@
+[
+  {
+    "height_id": 0,
+    "height_display": "Height",
+    "height_in_inches": 0,
+    "height_in_centimetres": 0
+  },
+  {
+    "height_id": 1,
+    "height_display": "5'0\" - 152.4",
+    "height_in_inches": "5'0\"",
+    "height_in_centimetres": 152.4
+  },
+  {
+    "height_id": 2,
+    "height_display": "5'1\" - 154.9",
+    "height_in_inches": "5'1\"",
+    "height_in_centimetres": 154.9
+  },
+  {
+    "height_id": 3,
+    "height_display": "5'2\" - 157.4",
+    "height_in_inches": "5'2\"",
+    "height_in_centimetres": 157.4
+  },
+  {
+    "height_id": 4,
+    "height_display": "5'3\" - 160.0",
+    "height_in_inches": "5'3\"",
+    "height_in_centimetres": 160
+  },
+  {
+    "height_id": 5,
+    "height_display": "5'4\" - 162.5",
+    "height_in_inches": "5'4\"",
+    "height_in_centimetres": 162.5
+  },
+  {
+    "height_id": 6,
+    "height_display": "5'5\" - 165.1",
+    "height_in_inches": "5'5\"",
+    "height_in_centimetres": 165.1
+  },
+  {
+    "height_id": 7,
+    "height_display": "5'6\" - 167.6",
+    "height_in_inches": "5'6\"",
+    "height_in_centimetres": 167.6
+  },
+  {
+    "height_id": 8,
+    "height_display": "5'7\" - 170.1",
+    "height_in_inches": "5'7\"",
+    "height_in_centimetres": 170.1
+  },
+  {
+    "height_id": 9,
+    "height_display": "5'8\" - 172.7",
+    "height_in_inches": "5'8\"",
+    "height_in_centimetres": 172.7
+  },
+  {
+    "height_id": 10,
+    "height_display": "5'9\" - 175.2",
+    "height_in_inches": "5'9\"",
+    "height_in_centimetres": 175.2
+  },
+  {
+    "height_id": 11,
+    "height_display": "5'10\" - 177.8",
+    "height_in_inches": "5'10\"",
+    "height_in_centimetres": 177.8
+  },
+  {
+    "height_id": 12,
+    "height_display": "5'11\" - 180.3",
+    "height_in_inches": "5'11\"",
+    "height_in_centimetres": 180.3
+  },
+  {
+    "height_id": 13,
+    "height_display": "6'0\" - 182.8",
+    "height_in_inches": "6'0\"",
+    "height_in_centimetres": 182.8
+  },
+  {
+    "height_id": 14,
+    "height_display": "6'1\" - 185.4",
+    "height_in_inches": "6'1\"",
+    "height_in_centimetres": 185.4
+  },
+  {
+    "height_id": 15,
+    "height_display": "6'2\" - 187.9",
+    "height_in_inches": "6'2\"",
+    "height_in_centimetres": 187.9
+  },
+  {
+    "height_id": 16,
+    "height_display": "6'3\" - 190.5",
+    "height_in_inches": "6'3\"",
+    "height_in_centimetres": 190.5
+  },
+  {
+    "height_id": 17,
+    "height_display": "6'4\" - 193.5",
+    "height_in_inches": "6'4\"",
+    "height_in_centimetres": 193
+  }
+]
