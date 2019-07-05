@@ -72,6 +72,6 @@ class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
     }
 
     fun addFace(view: View) {
-
+        startActivity(TrainingActivity.getStartIntent(this@MainActivity))
     }
 }
