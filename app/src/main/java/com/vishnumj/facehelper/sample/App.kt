@@ -8,11 +8,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val mRecogniserConfig: FaceHelper.() -> Unit = {
-            isFaceTrackerGraphicEnabled = true
-            mContext = this@App
-            mMaxRetryCount = Constants.Settings.FACE_DETECTION_RETRY_COUNT
-        }
-        FaceHelper.Builder().setInstance(mRecogniserConfig).build()
+        FaceHelper.Builder().setMaxRetryCount(Constants.Settings.FACE_DETECTION_RETRY_COUNT)
+            .setMinimumValidFrames(Constants.Settings.VIDEO_MINIMUM_VALID_FRAMES)
+            .setCacheDirectory(cacheDir).build()
     }
 }

@@ -4,16 +4,43 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.vishnumj.facehelper.FaceHelper
+import com.vishnumj.facehelper.utils.RecognitionUtils
+import com.vishnumj.facehelper.utils.TrainingError
 import com.vishnumj.facehelper.utils.VideoFileUtils
 import com.vishnumj.facehelper.utils.constants.Constants
 import kotlinx.android.synthetic.main.activity_training.*
 import kotlinx.android.synthetic.main.layout_count_down_timer.*
 import kotlinx.android.synthetic.main.layout_progress_circle.*
 
-class TrainingActivity : AppCompatActivity() {
+class TrainingActivity : AppCompatActivity(), FaceHelper.TrainingListener {
+    override fun onTrainingFinished(mTrainingResult: RecognitionUtils.TrainingResult) {
+        if (mTrainingResult.mResult == RecognitionUtils.Result.SUCCESS) {
+            finish()
+        }
+    }
+
+    override fun onTrainingFailed(mTrainingError: TrainingError) {
+        Toast.makeText(this@TrainingActivity, mTrainingError.getMessage(), Toast.LENGTH_SHORT)
+            .show()
+    }
+
+    override fun onProcessingInProgress(mProgress: Float?) {
+        mProgress?.let {
+            setProgress(it)
+        }
+
+    }
+
+    override fun onTrainingInProgress(mProgress: Float?) {
+        mProgress?.let {
+            setProgress(it)
+        }
+    }
 
 
     private var isVideoCapturing: Boolean = false
@@ -78,6 +105,11 @@ class TrainingActivity : AppCompatActivity() {
         view_camera_kit_scanner.captureVideo(VideoFileUtils.generateVideoFile(this@TrainingActivity)) {
             if (it.videoFile.exists()) {
                 showStatusMessage("Processing")
+                FaceHelper.getInstance().initFaceTraining(
+                    it.videoFile,
+                    "FACE_LABEL_${System.currentTimeMillis()}",
+                    this
+                )
             }
             isVideoCapturing = false
         }

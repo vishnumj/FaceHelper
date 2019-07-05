@@ -1,13 +1,19 @@
 package com.vishnumj.facehelper.sample
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.vishnumj.facehelper.FaceHelper
 import com.vishnumj.facehelper.utils.FaceError
 
 class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
+
+    private val PERMISSION_REQUEST_CODE: Int = 10
 
     override fun onPermissionDenied() {
 
@@ -53,12 +59,23 @@ class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        FaceHelper.getInstance().createCameraSource(
-            findViewById(R.id.overlay_graphic),
-            findViewById(R.id.camera_source_preview),
-            this
-        )
-
+        if (ActivityCompat.checkSelfPermission(
+                this@MainActivity,
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            FaceHelper.getInstance().createCameraSource(
+                findViewById(R.id.overlay_graphic),
+                findViewById(R.id.camera_source_preview),
+                this
+            )
+        } else {
+            ActivityCompat.requestPermissions(
+                this@MainActivity,
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                PERMISSION_REQUEST_CODE
+            )
+        }
     }
 
     override fun onPause() {
@@ -73,5 +90,24 @@ class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
 
     fun addFace(view: View) {
         startActivity(TrainingActivity.getStartIntent(this@MainActivity))
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                FaceHelper.getInstance().createCameraSource(
+                    findViewById(R.id.overlay_graphic),
+                    findViewById(R.id.camera_source_preview),
+                    this
+                )
+            }else{
+                onPermissionDenied()
+            }
+        }
     }
 }

@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
-import android.view.View
 import ch.zhaw.facerecognitionlibrary.Helpers.FileHelper
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils
 import com.google.android.gms.vision.CameraSource
@@ -30,21 +29,29 @@ import kotlin.coroutines.CoroutineContext
 
 class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope {
 
+    data class Builder(var mApplicationContext: Application? = null) {
+        private var mCacheDirectory: File? = null
+        private var mMaxRetryCount: Int? = 0
+        private var mMinimumValidFrames: Int? = 0
 
-    class Builder {
-
-        private lateinit var mConfig: FaceHelper.() -> Unit
-
-        fun setInstance(mRecogniserConfig: FaceHelper.() -> Unit): Builder {
-            this.mConfig = mRecogniserConfig
-            return this
+        fun build(): FaceHelper {
+            return init(mCacheDirectory, mMaxRetryCount, mMinimumValidFrames)
         }
 
-        fun build() {
-            init(FaceHelper().apply(mConfig))
+        fun setCacheDirectory(mCacheDirectory: File) = apply {
+            this.mCacheDirectory = mCacheDirectory
+        }
+
+        fun setMaxRetryCount(mCount: Int) = apply {
+            this.mMaxRetryCount = mCount
+        }
+
+        fun setMinimumValidFrames(mMinimumValidFrames: Int) = apply {
+            this.mMinimumValidFrames = mMinimumValidFrames
         }
 
     }
+
 
     private var mAttemptCount = 0
     var mMaxRetryCount = Constants.Settings.FACE_DETECTION_RETRY_COUNT
@@ -120,7 +127,7 @@ class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope 
     /**
      * Minimum valid frames in from a training video
      */
-    var minimumValidFrames = Constants.Settings.VIDEO_MINIMUM_VALID_FRAMES
+    var mMinimumValidFrames = Constants.Settings.VIDEO_MINIMUM_VALID_FRAMES
 
 
     public lateinit var mContext: Application
@@ -131,20 +138,39 @@ class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope 
 
     companion object {
 
-        private lateinit var mInstance: FaceHelper
+        private var mInstance: FaceHelper? = null
 
-        private fun init(mInstance: FaceHelper) {
-            this.mInstance = mInstance
-            if (mInstance.mCacheDirectory == null) {
-                mInstance.mCacheDirectory = mInstance.getContext().cacheDir
-                FileHelper.FOLDER_PATH = "${mInstance.mCacheDirectory}/facerecognition"
-                FileHelper.initDirectory()
+        private fun
+                init(
+            mCacheDirectory: File?,
+            mMaxRetryCount: Int?,
+            mMinimumValidFrames: Int?
+        ): FaceHelper {
+            this.mInstance = FaceHelper()
+            if (mCacheDirectory == null) {
+                mInstance?.mCacheDirectory = mInstance?.getContext()?.cacheDir
             }
 
+            FileHelper.FOLDER_PATH = "${mInstance?.mCacheDirectory}/facerecognition"
+            FileHelper.initDirectory()
+
+            if (mMaxRetryCount == null) {
+                mInstance?.mMaxRetryCount = Constants.Settings.FACE_DETECTION_RETRY_COUNT
+            }
+
+            if (mMinimumValidFrames == null) {
+                mInstance?.mMinimumValidFrames = Constants.Settings.VIDEO_MINIMUM_VALID_FRAMES
+            }
+
+            return this.mInstance!!
+        }
+
+        fun clearInstance() {
+            mInstance = null
         }
 
         fun getInstance(): FaceHelper {
-            return mInstance
+            return mInstance!!
         }
     }
 
