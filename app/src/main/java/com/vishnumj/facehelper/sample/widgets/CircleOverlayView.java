@@ -56,7 +56,7 @@ public class CircleOverlayView extends LinearLayout {
         RectF outerRectangle = new RectF(0, 0, getWidth(), getHeight());
 
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(getResources().getColor(R.color.background_transparent));
+        paint.setColor(Color.parseColor("#81323232"));
         osCanvas.drawRect(outerRectangle, paint);
 
         paint.setColor(Color.TRANSPARENT);

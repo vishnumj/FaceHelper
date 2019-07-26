@@ -25,20 +25,26 @@ class TrainingActivity : AppCompatActivity(), FaceHelper.TrainingListener {
     }
 
     override fun onTrainingFailed(mTrainingError: TrainingError) {
-        Toast.makeText(this@TrainingActivity, mTrainingError.getMessage(), Toast.LENGTH_SHORT)
-            .show()
+        runOnUiThread {
+            Toast.makeText(this@TrainingActivity, mTrainingError.getMessage(), Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
     override fun onProcessingInProgress(mProgress: Float?) {
-        mProgress?.let {
-            setProgress(it)
-        }
+        runOnUiThread {
+            mProgress?.let {
+                setProgress(it)
+            }
 
+        }
     }
 
     override fun onTrainingInProgress(mProgress: Float?) {
-        mProgress?.let {
-            setProgress(it)
+        runOnUiThread {
+            mProgress?.let {
+                setProgress(it)
+            }
         }
     }
 
@@ -96,6 +102,19 @@ class TrainingActivity : AppCompatActivity(), FaceHelper.TrainingListener {
         } else {
             setProgress((it.toInt() * 100 / Constants.Settings.VIDEO_LENGTH_LIMIT.toInt()).toFloat())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view_camera_kit_scanner.start()
+        isVideoCapturing = false
+    }
+
+
+    override fun onStop() {
+        view_camera_kit_scanner.stop()
+        super.onStop()
+        isVideoCapturing = false
     }
 
     private fun startVideoRecording() {

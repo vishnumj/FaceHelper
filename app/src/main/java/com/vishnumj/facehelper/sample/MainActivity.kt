@@ -3,6 +3,7 @@ package com.vishnumj.facehelper.sample
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.vishnumj.facehelper.FaceHelper
 import com.vishnumj.facehelper.utils.FaceError
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
 
@@ -20,39 +22,36 @@ class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
     }
 
     override fun onRecognitionInProgress() {
-        runOnUiThread {
+        appendToLog("onRecognitionInProgress()\n")
+    }
 
-            Toast.makeText(this@MainActivity, "onRecognitionInProgress()", Toast.LENGTH_SHORT)
-                .show()
+    private fun appendToLog(mLogMessage: String) {
+        runOnUiThread {
+            tv_status_log.append(mLogMessage)
+            sv_status_log.post {
+                sv_status_log.fullScroll(View.FOCUS_DOWN)
+            }
         }
     }
 
     override fun onSuccess(mLabel: String?) {
-        runOnUiThread {
+        appendToLog("onSuccess() $mLabel\n")
 
-            Toast.makeText(this@MainActivity, "onSuccess() $mLabel", Toast.LENGTH_SHORT).show()
-        }
+
     }
 
     override fun onFaceDone() {
-        runOnUiThread {
+        appendToLog("onFaceDone()\n")
 
-            Toast.makeText(this@MainActivity, "onFaceDone()", Toast.LENGTH_SHORT).show()
-        }
+
     }
 
     override fun onFaceMissing() {
-        runOnUiThread {
-
-            Toast.makeText(this@MainActivity, "onFaceMissing()", Toast.LENGTH_SHORT).show()
-        }
+        appendToLog("onFaceMissing()\n")
     }
 
     override fun onFailed(mFaceError: FaceError) {
-        runOnUiThread {
-
-            Toast.makeText(this@MainActivity, mFaceError.getMessage(), Toast.LENGTH_SHORT).show()
-        }
+        appendToLog("${mFaceError.getMessage()}\n")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,9 +82,16 @@ class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
         FaceHelper.getInstance().onPause()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        FaceHelper.getInstance().onDestroy()
+    }
+
     override fun onResume() {
         super.onResume()
-        FaceHelper.getInstance().onResume()
+        Handler().postDelayed({
+            FaceHelper.getInstance().onResume()
+        }, 1000)
     }
 
     fun addFace(view: View) {
@@ -105,7 +111,7 @@ class MainActivity : AppCompatActivity(), FaceHelper.RecognitionListener {
                     findViewById(R.id.camera_source_preview),
                     this
                 )
-            }else{
+            } else {
                 onPermissionDenied()
             }
         }

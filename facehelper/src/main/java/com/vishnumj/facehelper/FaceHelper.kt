@@ -29,13 +29,13 @@ import kotlin.coroutines.CoroutineContext
 
 class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope {
 
-    data class Builder(var mApplicationContext: Application? = null) {
+    data class Builder(var mApplicationContext: Application) {
         private var mCacheDirectory: File? = null
         private var mMaxRetryCount: Int? = 0
         private var mMinimumValidFrames: Int? = 0
 
         fun build(): FaceHelper {
-            return init(mCacheDirectory, mMaxRetryCount, mMinimumValidFrames)
+            return init(mApplicationContext, mCacheDirectory, mMaxRetryCount, mMinimumValidFrames)
         }
 
         fun setCacheDirectory(mCacheDirectory: File) = apply {
@@ -64,31 +64,33 @@ class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope 
         get() = Dispatchers.IO + mCoroutineJob
 
     override fun onFaceDetected() {
-        mCameraSource?.takePicture(null, {
-            if (!isFaceRecognitionInProgress) {
-                mRecognitionListener.onRecognitionInProgress()
-                Log.e("Byte Size", "" + it.size)
-                val file = File(FileHelper.SVM_PATH + "labelMap_train")
-                if (file.exists()) {
-                    isFaceRecognitionInProgress = true
-                    launch {
-                        val mResult = RecognitionUtils.initRecognition(
-                            RecognitionUtils.RecognitionRequest(rotateBitmap(it)),
-                            0
-                        )
-                        isFaceRecognitionInProgress = false
-                        if (mResult.mResult == RecognitionUtils.Result.SUCCESS) {
-                            mRecognitionListener.onSuccess(mResult.mResultLabel)
-                        } else {
-                            retryRecogniser()
+        if (!isFaceRecognitionInProgress) {
+            mCameraSource?.takePicture(null, {
+                if (!isFaceRecognitionInProgress) {
+                    mRecognitionListener.onRecognitionInProgress()
+                    Log.e("Byte Size", "" + it.size)
+                    val file = File(FileHelper.SVM_PATH + "labelMap_train")
+                    if (file.exists()) {
+                        isFaceRecognitionInProgress = true
+                        launch {
+                            val mResult = RecognitionUtils.initRecognition(
+                                RecognitionUtils.RecognitionRequest(rotateBitmap(it)),
+                                0
+                            )
+                            if (mResult.mResult == RecognitionUtils.Result.SUCCESS) {
+                                mRecognitionListener.onSuccess(mResult.mResultLabel)
+                            } else {
+                                retryRecogniser()
+                            }
+                            isFaceRecognitionInProgress = false
                         }
+                    } else {
+                        isFaceRecognitionInProgress = false
+                        mRecognitionListener.onFailed(EmptyFaceDataError())
                     }
-                } else {
-                    isFaceRecognitionInProgress = false
-                    mRecognitionListener.onFailed(EmptyFaceDataError())
                 }
-            }
-        })
+            })
+        }
     }
 
     private fun retryRecogniser() {
@@ -130,7 +132,7 @@ class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope 
     var mMinimumValidFrames = Constants.Settings.VIDEO_MINIMUM_VALID_FRAMES
 
 
-    public lateinit var mContext: Application
+    lateinit var mContext: Application
 
     fun getContext(): Application {
         return mContext
@@ -142,13 +144,17 @@ class FaceHelper() : GraphicFaceTracker.OnFaceDetectionListener, CoroutineScope 
 
         private fun
                 init(
+            mApplicationContext: Application,
             mCacheDirectory: File?,
             mMaxRetryCount: Int?,
             mMinimumValidFrames: Int?
         ): FaceHelper {
             this.mInstance = FaceHelper()
+            mInstance!!.mContext = mApplicationContext
             if (mCacheDirectory == null) {
                 mInstance?.mCacheDirectory = mInstance?.getContext()?.cacheDir
+            } else {
+                mInstance?.mCacheDirectory = mCacheDirectory
             }
 
             FileHelper.FOLDER_PATH = "${mInstance?.mCacheDirectory}/facerecognition"

@@ -8,7 +8,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        FaceHelper.Builder().setMaxRetryCount(Constants.Settings.FACE_DETECTION_RETRY_COUNT)
+        FaceHelper.Builder(this).setMaxRetryCount(Constants.Settings.FACE_DETECTION_RETRY_COUNT)
             .setMinimumValidFrames(Constants.Settings.VIDEO_MINIMUM_VALID_FRAMES)
             .setCacheDirectory(cacheDir).build()
     }

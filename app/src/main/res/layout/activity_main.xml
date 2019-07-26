@@ -6,15 +6,25 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".MainActivity">
 
-    <com.vishnumj.facehelper.view.camera.GraphicOverlay
-            android:layout_width="match_parent"
-            android:id="@+id/overlay_graphic"
-            android:layout_height="match_parent" />
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/sv_status_log"
+            android:background="@color/background_transparent"
+            app:layout_constraintBottom_toTopOf="@+id/button_add_face"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/camera_source_preview"
+            android:layout_width="0dp"
+            android:layout_height="100dp">
 
-    <com.vishnumj.facehelper.view.camera.CameraSourcePreview
-            android:layout_width="match_parent"
-            android:id="@+id/camera_source_preview"
-            android:layout_height="match_parent" />
+        <TextView
+                android:padding="10dp"
+                android:id="@+id/tv_status_log"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:textColor="@color/grey_50"
+                android:layout_height="wrap_content" />
+    </androidx.core.widget.NestedScrollView>
+
 
     <Button
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,5 +36,22 @@
             android:onClick="addFace"
             android:layout_height="wrap_content" />
 
+
+    <com.vishnumj.facehelper.view.camera.CameraSourcePreview
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/sv_status_log"
+            android:id="@+id/camera_source_preview"
+            android:layout_height="0dp">
+
+
+    </com.vishnumj.facehelper.view.camera.CameraSourcePreview>
+
+    <com.vishnumj.facehelper.view.camera.GraphicOverlay
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button_add_face"
+            android:id="@+id/overlay_graphic"
+            android:layout_height="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
